@@ -10,26 +10,27 @@ api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufWritePost", {
+-- reduced duration for saved file message
+api.nvim_create_autocmd("BufWritePost", {
   callback = function()
     vim.defer_fn(function()
       vim.cmd("echo ''")
-    end, 500)
+    end, 1000)
   end,
 })
 
 -- notification on save of file
-vim.api.nvim_create_autocmd("BufWritePost", {
+api.nvim_create_autocmd("BufWritePost", {
   callback = function(args)
     local filename = vim.fn.fnamemodify(args.file, ":t")
     local text = " Saved: " .. filename .. " "
 
     local width = vim.fn.strdisplaywidth(text)
 
-    local buf = vim.api.nvim_create_buf(false, true)
-    vim.api.nvim_buf_set_lines(buf, 0, -1, false, { text })
+    local buf = api.nvim_create_buf(false, true)
+    api.nvim_buf_set_lines(buf, 0, -1, false, { text })
 
-    local win = vim.api.nvim_open_win(buf, false, {
+    local win = api.nvim_open_win(buf, false, {
       relative = "editor",
       row = 0,
       col = vim.o.columns - width - 1,
@@ -40,12 +41,12 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     })
 
     vim.defer_fn(function()
-      if vim.api.nvim_win_is_valid(win) then
-        vim.api.nvim_win_close(win, true)
+      if api.nvim_win_is_valid(win) then
+        api.nvim_win_close(win, true)
       end
 
-      if vim.api.nvim_buf_is_valid(buf) then
-        vim.api.nvim_buf_delete(buf, { force = true })
+      if api.nvim_buf_is_valid(buf) then
+        api.nvim_buf_delete(buf, { force = true })
       end
     end, 1000)
   end,
@@ -108,9 +109,9 @@ api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- Fix multiple blank lines to a single blank line
-vim.api.nvim_create_autocmd("BufWritePre", {
+api.nvim_create_autocmd("BufWritePre", {
   callback = function()
-    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    local lines = api.nvim_buf_get_lines(0, 0, -1, false)
     local has_extra = false
 
     for i = 2, #lines do
@@ -139,7 +140,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
       end
     end
 
-    vim.api.nvim_buf_set_lines(0, 0, -1, false, result)
+    api.nvim_buf_set_lines(0, 0, -1, false, result)
   end,
 })
 
@@ -153,20 +154,20 @@ local function remove_trailing_blank_lines()
   end
 end
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+api.nvim_create_autocmd("BufWritePre", {
   callback = remove_trailing_blank_lines,
 })
 
 -- permanent bold/italic disabled
-vim.api.nvim_create_autocmd("ColorScheme", {
+api.nvim_create_autocmd("ColorScheme", {
   desc = "Strip bold and italic from all highlight groups",
   callback = function()
     for _, group in ipairs(vim.fn.getcompletion("", "highlight")) do
-      local hl = vim.api.nvim_get_hl(0, { name = group })
+      local hl = api.nvim_get_hl(0, { name = group })
       if hl.bold or hl.italic then
         hl.bold = false
         hl.italic = false
-        vim.api.nvim_set_hl(0, group, hl)
+        api.nvim_set_hl(0, group, hl)
       end
     end
   end,
