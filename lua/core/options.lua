@@ -40,7 +40,6 @@ opt.smartcase = true
 
 -- CMD Mode Display
 opt.showmode = false
-opt.cmdheight = 0
 
 -- line wrap
 opt.wrap = true

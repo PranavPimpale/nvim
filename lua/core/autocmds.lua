@@ -10,6 +10,14 @@ api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("BufWritePost", {
+  callback = function()
+    vim.defer_fn(function()
+      vim.cmd("echo ''")
+    end, 500)
+  end,
+})
+
 -- notification on save of file
 vim.api.nvim_create_autocmd("BufWritePost", {
   callback = function(args)
