@@ -231,7 +231,7 @@ local function global_highlights()
   transparent_bg()
 
   -- Cursor line
-  api.nvim_set_hl(0, "CursorLine", { bg = colors.line })
+  -- api.nvim_set_hl(0, "CursorLine", { bg = colors.line })
 
   -- Search
   api.nvim_set_hl(0, "Search", { bg = colors.search })
@@ -245,12 +245,12 @@ local function global_highlights()
   })
 
   -- telescope cursor line
-  api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.select })
+  -- api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.select })
 
   -- cmp.nvim coloring stuffs
-  api.nvim_set_hl(0, "CmpSel", { fg = nil, bg = colors.select })
-  api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = colors.comment, bold = true })
-  api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = colors.comment, bold = true })
+  api.nvim_set_hl(0, "CmpSel", { fg = nil, bg = colors.cmpsel })
+  api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = colors.warning, bold = true })
+  api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = colors.warning, bold = true })
   api.nvim_set_hl(0, "CmpItemAbbr", { fg = colors.itemAbbr })
   api.nvim_set_hl(0, "CmpItemMenu", { fg = colors.itemMenu })
   api.nvim_set_hl(0, "CmpItemKind", { fg = colors.dark })

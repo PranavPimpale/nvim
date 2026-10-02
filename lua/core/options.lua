@@ -47,3 +47,4 @@ opt.linebreak = true
 
 -- blank line "~" disabled
 opt.fillchars = "eob: "
+opt.cursorline = false

@@ -99,13 +99,17 @@ return {
 
         completion = {
           completeopt = "menu,menuone,noinsert",
-          autocomplete = { cmp.TriggerEvent.TextChanged },
+          autocomplete = {
+            cmp.TriggerEvent.TextChanged,
+            cmp.TriggerEvent.TextChangedI,
+            cmp.TriggerEvent.TextChangedP,
+            cmp.TriggerEvent.InsertEnter,
+          },
         },
 
         window = {
           completion = cmp.config.window.bordered({
             border = "rounded",
-            max_height = 8,
             scrollbar = false,
             side_padding = 1,
             winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CmpSel,Search:None",

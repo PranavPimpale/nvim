@@ -19,8 +19,8 @@ return {
             i = {
               ["<Esc>"] = actions.close,
 
-              ["<M-j>"] = actions.move_selection_next,
-              ["<M-k>"] = actions.move_selection_previous,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
 
               ["<C-h>"] = function()
                 vim.api.nvim_feedkeys(
@@ -92,8 +92,8 @@ return {
           require("telescope.themes").get_dropdown({
             previewer = false,
             layout_config = {
-              width = 0.7,
-              height = 0.7,
+              width = 0.6,
+              height = 0.9,
             },
             selection_caret = "➜ ",
           })

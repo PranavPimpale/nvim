@@ -18,31 +18,31 @@ return {
 
     local bubbles_theme = {
       normal = vim.tbl_extend("force", common, {
-        a = { fg = color.red, bg = color.dark, gui = "bold" },
+        a = { fg = color.black, bg = color.red, gui = "bold" },
       }),
 
       insert = vim.tbl_extend("force", common, {
-        a = { fg = color.blue, bg = color.dark, gui = "bold" },
+        a = { fg = color.black, bg = color.blue, gui = "bold" },
       }),
 
       visual = vim.tbl_extend("force", common, {
-        a = { fg = color.cyan, bg = color.dark, gui = "bold" },
+        a = { fg = color.black, bg = color.cyan, gui = "bold" },
       }),
 
       command = vim.tbl_extend("force", common, {
-        a = { fg = color.green, bg = color.dark, gui = "bold" },
+        a = { fg = color.black, bg = color.green, gui = "bold" },
       }),
 
       replace = vim.tbl_extend("force", common, {
-        a = { fg = color.white, bg = color.dark, gui = "bold" },
+        a = { fg = color.black, bg = color.white, gui = "bold" },
       }),
 
       terminal = vim.tbl_extend("force", common, {
-        a = { fg = color.violet, bg = color.dark, gui = "bold" },
+        a = { fg = color.black, bg = color.violet, gui = "bold" },
       }),
 
       inactive = vim.tbl_extend("force", common, {
-        a = { fg = color.violet, bg = color.dark, gui = "bold" },
+        a = { fg = color.black, bg = color.violet, gui = "bold" },
       }),
     }
 
@@ -103,42 +103,16 @@ return {
           },
         },
 
-        lualine_x = {
-          {
-            function()
-              local date = tostring(os.date("%d %b")):gsub("^0", ""):lower()
+        lualine_x = {},
 
-              return string.format("%s", date)
-            end,
-
-            color = {
-              fg = color.white,
-              bg = color.black,
-            },
-          },
-        },
-
-        lualine_y = {
-          {
-            function ()
-              local time = tostring(os.date("%I:%M %p")):gsub("^0", ""):lower()
-
-              return string.format("%s", time)
-            end,
-
-            color = {
-              fg = color.white,
-              bg = color.dark,
-            },
-          },
-        },
+        lualine_y = {},
 
         lualine_z = {
           {
             "branch",
             color = {
-              fg = color.white,
-              bg = color.dark,
+              fg = color.black,
+              bg = color.green,
             }
           },
         },

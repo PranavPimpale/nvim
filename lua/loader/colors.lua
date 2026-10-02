@@ -17,7 +17,7 @@ return {
   search = '#303030',
   incsearch = '#505050',
   parenthesis = '#E55452',
-
+  cmpsel = '#353535',
 
   -- [THEME] : "vague"
   bg = '#090909',  -- neovim background color

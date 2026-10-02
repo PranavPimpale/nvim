@@ -1,7 +1,7 @@
 local term_buf = nil
 local term_win = nil
-local width = 55
-local height = 12
+local width = 100
+local height = 20
 
 local function create_terminal()
   local row = math.floor((vim.o.lines - height) / 2) - 2
@@ -67,8 +67,8 @@ local function kill_terminal()
   term_win = nil
 end
 
-vim.keymap.set({ "n", "t" }, "<A-k>", toggle_terminal, { silent = true })
-vim.keymap.set({ "n", "t" }, "<A-d>", kill_terminal, { silent = true })
+vim.keymap.set({ "n", "t" }, "<C-k>", toggle_terminal, { silent = true })
+vim.keymap.set({ "n", "t" }, "<C-d>", kill_terminal, { silent = true })
 
 vim.keymap.set("t", "<Esc>", function()
   if term_win and vim.api.nvim_win_is_valid(term_win) then
