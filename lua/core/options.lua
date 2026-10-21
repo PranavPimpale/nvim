@@ -18,7 +18,7 @@ opt.scrolloff = 3
 opt.signcolumn = "yes"
 
 -- Performance
-opt.updatetime = 50
+opt.updatetime = 100
 opt.timeoutlen = 225
 opt.synmaxcol = 200
 
@@ -47,4 +47,3 @@ opt.linebreak = true
 
 -- blank line "~" disabled
 opt.fillchars = "eob: "
-opt.cursorline = false

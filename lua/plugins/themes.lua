@@ -76,6 +76,22 @@ return {
   },
 
   {
+    "MuhammedZohaib/emberbox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("emberbox")
+    end,
+  },
+
+  {
+    "wtfox/luna.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+
+  {
     'brenoprata10/nvim-highlight-colors',
     enabled = toggle.highlight,
     config = function()

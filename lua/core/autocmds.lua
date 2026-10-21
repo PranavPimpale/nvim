@@ -254,6 +254,8 @@ local function global_highlights()
   api.nvim_set_hl(0, "CmpItemAbbr", { fg = colors.itemAbbr })
   api.nvim_set_hl(0, "CmpItemMenu", { fg = colors.itemMenu })
   api.nvim_set_hl(0, "CmpItemKind", { fg = colors.dark })
+
+  vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
 end
 
 global_highlights()
