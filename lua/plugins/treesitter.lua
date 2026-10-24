@@ -46,16 +46,8 @@ return {
         return not vim.tbl_contains(installed, lang)
       end, ensure_installed)
 
-      local to_uninstall = vim.tbl_filter(function(lang)
-        return not vim.tbl_contains(ensure_installed, lang)
-      end, installed)
-
       if #to_install > 0 then
         treesitter.install(to_install)
-      end
-
-      if #to_uninstall > 0 then
-        treesitter.uninstall(to_uninstall)
       end
 
       -- Safe FileType autocmd for highlighting + indentation
@@ -85,26 +77,26 @@ return {
     end,
   },
   -- NOTE: js,ts,jsx,tsx Auto Close Tags
-  -- {
-  --   "windwp/nvim-ts-autotag",
-  --   enabled = plugins.ts_autotag,
-  --   ft = { "html", "xml", "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte" },
-  --   config = function()
-  --     require("nvim-ts-autotag").setup({
-  --       opts = {
-  --         enable_close = true,           -- Auto-close tags
-  --         enable_rename = true,          -- Auto-rename pairs
-  --         enable_close_on_slash = false, -- Disable auto-close on trailing `</`
-  --       },
-  --       per_filetype = {
-  --         ["html"] = {
-  --           enable_close = true,
-  --         },
-  --         ["typescriptreact"] = {
-  --           enable_close = true,
-  --         },
-  --       },
-  --     })
-  --   end,
-  -- },
+  {
+    "windwp/nvim-ts-autotag",
+    enabled = toggle.ts_autotag,
+    ft = { "html", "xml", "javascript", "typescript", "javascriptreact", "typescriptreact", "svelte" },
+    config = function()
+      require("nvim-ts-autotag").setup({
+        opts = {
+          enable_close = true,           -- Auto-close tags
+          enable_rename = true,          -- Auto-rename pairs
+          enable_close_on_slash = false, -- Disable auto-close on trailing `</`
+        },
+        per_filetype = {
+          ["html"] = {
+            enable_close = true,
+          },
+          ["typescriptreact"] = {
+            enable_close = true,
+          },
+        },
+      })
+    end,
+  },
 }

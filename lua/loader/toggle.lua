@@ -13,4 +13,5 @@ return {
   telescope = true,
   tiny = true,
   treesitter = true,
+  ts_autotag = true
 }

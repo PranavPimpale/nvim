@@ -74,48 +74,20 @@ return {
 
       -- keymaps
       vim.keymap.set("n", "<leader>f", function()
-        require("telescope.builtin").find_files(
-          require("telescope.themes").get_dropdown({
-            previewer = false,
-            layout_config = {
-              width = 0.6,
-              height = 0.9,
-            },
-            selection_caret = "➜ ",
-          })
-        )
+        builtin.find_files({
+          selection_caret = "➜ ",
+        })
       end)
+
       vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = 'Telescope live grep' })
 
       vim.keymap.set("n", "<leader>b", function()
-        require("telescope.builtin").buffers(
-          require("telescope.themes").get_dropdown({
-            previewer = false,
-            layout_config = {
-              width = 0.6,
-              height = 0.9,
-            },
-            selection_caret = "➜ ",
-          })
-        )
+        builtin.buffers({
+          selection_caret = "➜ ",
+        })
       end)
 
-      vim.keymap.set('n', '<leader>t', builtin.help_tags, { desc = 'Telescope help tags' })
-
-      vim.keymap.set("n", "<leader>o", function()
-        require("telescope.builtin").lsp_document_symbols(
-          require("telescope.themes").get_dropdown({
-            previewer = false,
-            layout_config = {
-              width = 0.6,
-              height = 0.9,
-            },
-            selection_caret = "➜ ",
-            symbols = { "Function", "Method" },
-            show_line = false,
-          })
-        )
-      end)
+      vim.keymap.set('n', '<leader>he', builtin.help_tags, { desc = 'Telescope help tags' })
     end
   }
 }

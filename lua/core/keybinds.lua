@@ -87,15 +87,3 @@ end, { silent = true })
 -- better pasting
 keymap.set("n", "p", "p`]")
 keymap.set("n", "P", "P`]")
-
--- mouse Toggle
-local file = vim.fn.stdpath("state") .. "/mouse"
-
-pcall(function()
-  vim.o.mouse = vim.fn.readfile(file)[1]
-end)
-
-keymap.set("n", "<leader>mt", function()
-  vim.o.mouse = vim.o.mouse == "" and "a" or ""
-  vim.fn.writefile({ vim.o.mouse }, file)
-end)

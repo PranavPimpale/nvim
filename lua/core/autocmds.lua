@@ -19,39 +19,6 @@ api.nvim_create_autocmd("BufWritePost", {
   end,
 })
 
--- notification on save of file
-api.nvim_create_autocmd("BufWritePost", {
-  callback = function(args)
-    local filename = vim.fn.fnamemodify(args.file, ":t")
-    local text = " Saved: " .. filename .. " "
-
-    local width = vim.fn.strdisplaywidth(text)
-
-    local buf = api.nvim_create_buf(false, true)
-    api.nvim_buf_set_lines(buf, 0, -1, false, { text })
-
-    local win = api.nvim_open_win(buf, false, {
-      relative = "editor",
-      row = 0,
-      col = vim.o.columns - width - 1,
-      width = width,
-      height = 1,
-      style = "minimal",
-      border = "rounded",
-    })
-
-    vim.defer_fn(function()
-      if api.nvim_win_is_valid(win) then
-        api.nvim_win_close(win, true)
-      end
-
-      if api.nvim_buf_is_valid(buf) then
-        api.nvim_buf_delete(buf, { force = true })
-      end
-    end, 1000)
-  end,
-})
-
 -- restore cursor to file position in previous editing session
 api.nvim_create_autocmd("BufReadPost", {
   callback = function(args)

@@ -24,7 +24,7 @@ return {
       end
 
       local cmdline_mapping = {
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<Tab>"] = cmp.mapping(function()
           if cmp.visible() then
             cmp.select_next_item({
               behavior = cmp.SelectBehavior.Insert,
@@ -94,7 +94,6 @@ return {
           debounce = 20,
           throttle = 10,
           fetching_timeout = 100,
-          max_view_entries = 10,
         },
 
         completion = {

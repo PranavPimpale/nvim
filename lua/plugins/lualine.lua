@@ -112,7 +112,7 @@ return {
             "branch",
             color = {
               fg = color.black,
-              bg = color.green,
+              bg = color.fg,
             }
           },
         },
