@@ -207,7 +207,7 @@ local function global_highlights()
   -- Matching Parenthesis
   api.nvim_set_hl(0, "MatchParen", {
     fg = colors.parenthesis,
-    bg = colors.grey,
+    -- bg = colors.grey,
     bold = true,
   })
 
@@ -222,7 +222,8 @@ local function global_highlights()
   api.nvim_set_hl(0, "CmpItemMenu", { fg = colors.itemMenu })
   api.nvim_set_hl(0, "CmpItemKind", { fg = colors.dark })
 
-  vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
+  -- cursor coloring stuffs
+  api.nvim_set_hl(0, "CursorLine", { bg = "NONE" })
 end
 
 global_highlights()
