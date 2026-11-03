@@ -42,19 +42,8 @@ keymap.set('n', 'U', ':redo<CR>', { noremap = true, silent = true })
 -- select whole file
 keymap.set("n", "va", "ggVG", { silent = true, desc = "Select entire file" })
 
--- yank/paste to clipboard
-keymap.set("v", "<leader>y", function()
-  local pos = vim.api.nvim_win_get_cursor(0)
-  vim.cmd('normal! "+y')
-  vim.api.nvim_win_set_cursor(0, pos)
-end, { silent = true, desc = "Yank to system clipboard" })
-
-keymap.set({ "n", "v" }, "<leader>p", function()
-  vim.cmd('normal! "+p')
-  vim.cmd("normal! '[V']")
-  vim.cmd("normal! =")
-  vim.cmd("normal! ']$")
-end, { silent = true, desc = "Paste and format" })
+-- yank to clipboard
+vim.keymap.set("v", "<C-c>", '"+y', { desc = "Copy to system clipboard" })
 
 -- format file
 keymap.set("n", "<leader>cf", function()
